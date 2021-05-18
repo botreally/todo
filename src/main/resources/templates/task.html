@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello of duhg Word</h1>
+    <table>
+        <tr>
+            <th>TITLE</th>
+            <th>DESCRIPTION</th>
+            <th>DUDATE</th>
+            <th>COMPLETNA</th>
+        </tr>
+        <tr th:each="task:${tasks}">
+            <td th:text="${task.title}"></td>
+            <td th:text="${task.description}"></td>
+            <td th:text="${task.dueDate}"></td>
+            <td th:text="${task.complete}"></td>
+        </tr>
+    </table>
+</body>
+</html>
