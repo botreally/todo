@@ -8,6 +8,17 @@
 </head>
 <body>
     <h1>Hello of duhg Word</h1>
+    <form action="#" th:action="@{/}" th:object="${task}" method="post">
+        <label for="title">TILE</label>
+        <input type="text" name="title" th:field="*{title}">
+        <label for="description">Descroption</label>
+        <input type="text" name="description" th:field="*{description}">
+        <label for="dueDate">DUDATE</label>
+        <input type="text" name="dueDate" th:field="*{dueDate}">
+        <label for="complete">COMEPLE</label>
+        <input type="text" name="complete" th:field="*{complete}">
+        <button type="submit">EHCK</button>
+    </form>
     <table>
         <tr>
             <th>TITLE</th>

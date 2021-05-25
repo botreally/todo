@@ -8,5 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Integer> {
-    
+    void deleteById(int id);
+
+    boolean existsById(int id);
 }
