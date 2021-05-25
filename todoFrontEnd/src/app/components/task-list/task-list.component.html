@@ -1,0 +1,15 @@
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Complete</th>
+    </tr>
+    <tr *ngFor="let task of tasks">
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.dueDate}}</td>
+        <td *ngIf="task.complete"><input type="checkbox" checked (change)="updateComplete(task)"></td>
+        <td *ngIf="!task.complete"><input type="checkbox" (change)="updateComplete(task)"></td>
+    </tr>
+</table>
