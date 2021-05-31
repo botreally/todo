@@ -3,5 +3,5 @@ export interface Task {
     title: String,
     description: String,
     dueDate: Date,
-    complete: boolean
+    complete?: boolean
 }

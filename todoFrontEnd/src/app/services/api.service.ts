@@ -15,7 +15,7 @@ export class ApiService {
   }
 
   addTask(task: Task) {
-    this.http.post("http://localhost:8080/api/tasks", task);
+    this.http.post("http://localhost:8080/api/tasks", task).subscribe();
   }
 
   updateTask(task: Task) {
@@ -23,6 +23,6 @@ export class ApiService {
   }
   
   deleteTask(id: number) {
-    this.http.delete(`http://localhost:8080/api/tasks/${id}`);
+    this.http.delete(`http://localhost:8080/api/tasks/${id}`).subscribe();
   }
 }

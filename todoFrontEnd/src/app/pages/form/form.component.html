@@ -1,12 +1,12 @@
 <h1>form works!</h1>
-<form action="/" method="POST">
+<form [formGroup]="form" (ngSubmit)="postTask(form.value)">
     <label for="title">Title</label>
-    <input type="text" name="title">
+    <input type="text" name="title" formControlName="title">
     <label for="description">Description</label>
-    <input type="text" name="description">
+    <input type="text" name="description" formControlName="description">
     <label for="dueDate">Due Date</label>
-    <input type="date" name="dueDate">
-    <button type="submit">Submit</button>
+    <input type="date" name="dueDate" formControlName="dueDate">
+    <button type="submit" [disabled]="!form.valid" routerLink="">Submit</button>
 </form>
 
 <a routerLink="/">BACK</a>
