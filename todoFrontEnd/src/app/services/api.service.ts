@@ -8,21 +8,31 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
+  selectedTask?: Task;
+
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>("http://localhost:8080/api/tasks");
   }
 
-  addTask(task: Task) {
-    this.http.post("http://localhost:8080/api/tasks", task).subscribe();
+  addTask(task: Task): Observable<Task> {
+    return this.http.post<Task>("http://localhost:8080/api/tasks", task);
   }
 
-  updateTask(task: Task) {
-    this.http.put<Task>(`http://localhost:8080/api/tasks/${task.id}`, task).subscribe();
+  updateTask(task: Task): Observable<Task> {
+    return this.http.put<Task>(`http://localhost:8080/api/tasks/${task.id}`, task);
   }
   
   deleteTask(id: number) {
-    this.http.delete(`http://localhost:8080/api/tasks/${id}`).subscribe();
+    return this.http.delete<Task>(`http://localhost:8080/api/tasks/${id}`);
+  }
+
+  selectTask(task: Task) {
+    this.selectedTask = task;
+  }
+
+  unselectTask() {
+    this.selectedTask = undefined;
   }
 }

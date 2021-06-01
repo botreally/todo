@@ -1,11 +1,13 @@
 <table>
     <tr>
+        <th></th>
         <th>Title</th>
         <th>Description</th>
         <th>Due Date</th>
         <th>Complete</th>
     </tr>
     <tr *ngFor="let task of tasks">
+        <td><button routerLink="/form" (click)="selectTask(task)">Edit</button></td>
         <td>{{task.title}}</td>
         <td>{{task.description}}</td>
         <td>{{task.dueDate}}</td>

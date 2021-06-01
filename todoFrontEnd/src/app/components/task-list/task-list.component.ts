@@ -15,6 +15,7 @@ export class TaskListComponent implements OnInit {
 
   ngOnInit() {
     this.api.getTasks().subscribe(result => {
+      console.log("Get Tasks");
       this.tasks = result;
     })
   }
@@ -23,5 +24,10 @@ export class TaskListComponent implements OnInit {
     task.complete = !task.complete;
     
     this.api.updateTask(task);
+  }
+
+  selectTask(task: Task) {
+    console.log(task);
+    this.api.selectTask(task);
   }
 }
