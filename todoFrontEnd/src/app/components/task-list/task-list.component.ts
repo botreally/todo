@@ -23,7 +23,7 @@ export class TaskListComponent implements OnInit {
   updateComplete(task: Task) {
     task.complete = !task.complete;
     
-    this.api.updateTask(task);
+    this.api.updateTask(task).subscribe();
   }
 
   selectTask(task: Task) {

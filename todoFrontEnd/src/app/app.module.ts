@@ -9,13 +9,15 @@ import { ApiService } from './services/api.service';
 import { HomeComponent } from './pages/home/home.component';
 import { FormComponent } from './pages/form/form.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FormComponent,
-    TaskListComponent
+    TaskListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,22 @@
-<table>
-    <tr>
-        <th></th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Due Date</th>
-        <th>Complete</th>
-    </tr>
-    <tr *ngFor="let task of tasks">
-        <td><button routerLink="/form" (click)="selectTask(task)">Edit</button></td>
-        <td>{{task.title}}</td>
-        <td>{{task.description}}</td>
-        <td>{{task.dueDate}}</td>
-        <td *ngIf="task.complete"><input type="checkbox" checked (change)="updateComplete(task)"></td>
-        <td *ngIf="!task.complete"><input type="checkbox" (change)="updateComplete(task)"></td>
-    </tr>
+<table class="table table-light table-bordered">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col" class="text-center">Due Date</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of tasks">
+            <td *ngIf="task.complete" class="text-center"><input type="checkbox" checked (change)="updateComplete(task)"></td>
+            <td *ngIf="!task.complete" class="text-center"><input type="checkbox" (change)="updateComplete(task)"></td>
+            <td scope="row" id="title">{{task.title}}</td>
+            <td id="desc">{{task.description}}</td>
+            <td class="text-center" id="date">{{task.dueDate}}</td>
+            <!-- <td><button routerLink="/form" (click)="selectTask(task)" class="btn btn-primary mx-auto d-block">Edit</button></td> -->
+            <td><a class="d-flex justify-content-center" (click)="selectTask(task)" routerLink="/form"><img src="/assets/icons/pencil.svg" alt="Bootstrap" width="16" height="16"></a></td>
+        </tr>
+    </tbody>
 </table>
