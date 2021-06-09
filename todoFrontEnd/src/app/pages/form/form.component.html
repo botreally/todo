@@ -8,34 +8,39 @@
     </div>
     <div class="form-group mt-2">
         <label for="description">Description</label>
-        <textarea class="form-control" name="description" cols="30" rows="4" formControlName="description" maxlength="250"></textarea>
+        <textarea class="form-control" name="description" cols="30" rows="4" formControlName="description"
+            maxlength="250"></textarea>
     </div>
     <div class="form-group mt-2">
         <label for="dueDate">Due Date</label>
         <input class="form-control w-auto" type="date" name="dueDate" formControlName="dueDate">
     </div>
-    <button type="submit" (click)="postTask(form.value)" [disabled]="!form.valid" class="btn btn-primary mt-2">Submit</button>
+    <button type="submit" (click)="postTask(form.value)" [disabled]="!form.valid"
+        class="btn btn-primary mt-2">Submit</button>
 </form>
 
 <!-- Form for editing tasks -->
 <form [formGroup]="form" *ngIf="task != undefined">
     <div class="form-group">
         <label for="title">TITLE</label>
-        <input type="text" class="form-control"  name="title" formControlName="title" maxlength="50">
+        <input type="text" class="form-control" name="title" formControlName="title" maxlength="50">
     </div>
     <div class="form-group">
         <label for="description">Description</label>
         <!-- <input type="text" name="description" formControlName="description" [value]="task.description"> -->
-        <textarea class="form-control" name="description" cols="30" rows="4" formControlName="description">task.description</textarea>
+        <textarea class="form-control" name="description" cols="30" rows="4"
+            formControlName="description">task.description</textarea>
     </div>
     <div class="form-group">
         <label for="dueDate">Due Date</label>
-        <input type="date" class="form-control  w-auto"  name="dueDate" formControlName="dueDate" [value]="task.dueDate">
+        <input type="date" class="form-control  w-auto" name="dueDate" formControlName="dueDate" [value]="task.dueDate">
     </div>
-    <button (click)="putTask(form.value)" [disabled]="!form.valid" class="btn btn-primary mt-2">Submit</button>
-    <button (click)="deleteTask()" class="btn btn-primary mt-2">Delete</button>
+    <div class="button-group mt-2">
+        <button (click)="putTask(form.value)" [disabled]="!form.valid" class="btn btn-primary">Submit</button>
+        <button (click)="deleteTask()" class="btn btn-danger">Delete</button>
+    </div>
 </form>
 
-<div class="mt-5">
-    <button routerLink="/" class="btn btn-primary mt-2">Cancel</button>
+<div class="mt-4">
+    <button routerLink="/" class="btn btn-outline-secondary mt-2 btn-sm">Cancel</button>
 </div>
