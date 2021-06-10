@@ -1,6 +1,8 @@
 package com.brendamarvin.todo.business.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,10 +33,26 @@ public class TaskService {
             TaskDTO taskDTO = new TaskDTO(task);
             taskList.add(taskDTO);
         });
+        Collections.sort(taskList);
+        return taskList;
+    }
+
+    public List<TaskDTO> getTasks(boolean complete) {
+        Iterable<Task> tasks = this.taskRepository.findAllByComplete(complete);
+        List<TaskDTO> taskList = new ArrayList<>();
+        tasks.forEach(task -> {
+            TaskDTO taskDTO = new TaskDTO(task);
+            taskList.add(taskDTO);
+        });
+        Collections.sort(taskList);
         return taskList;
     }
 
     public TaskDTO createOrUpdateTask(Task task) {
+        if (task.getIndex() == null) {
+            int newIndex = this.taskRepository.findAllByComplete(task.isComplete()).size();
+            task.setIndex(newIndex);
+        }
         this.taskRepository.save(task);
         TaskDTO taskDTO = new TaskDTO(task);
         return taskDTO;
@@ -43,7 +61,6 @@ public class TaskService {
     public TaskDTO deleteTask(int id) {
         Task task = this.taskRepository.findById(id).get();
         this.taskRepository.deleteById(id);
-        logger.debug("DIS IS TASK: " + task);
         TaskDTO taskDTO = new TaskDTO(task);
         return taskDTO;
     }

@@ -50,14 +50,21 @@ export class TaskListComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Task[]>) {
+    console.log(event);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+
+      this.updateList(event.container.data);
+
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex);
         this.updateComplete(event.container.data[event.currentIndex]);
+
+      this.updateList(event.container.data);
+      this.updateList(event.previousContainer.data);
     }
   }
 
@@ -70,5 +77,12 @@ export class TaskListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.fetchData();
     });
+  }
+
+  updateList(list: Task[]) {
+    for (let i = 0; i < list.length; i++) {
+      list[i].index = i;
+      this.api.updateTask(list[i]).subscribe();
+    }
   }
 }

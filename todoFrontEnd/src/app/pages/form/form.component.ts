@@ -38,41 +38,29 @@ export class FormComponent implements OnInit {
   postTask(task: Task) {
     this.api.addTask(task).subscribe({
       complete: () => {
-        console.log("Complete");
         this.router.navigate(["/"]);
-      },
-      error: err => {
-        console.log("Error: " + err);
       }
     });
   }
 
   putTask(task: Task) {
-    console.log("UPDATE: " + task);
     if (this.task != undefined) {
       task["id"] = this.task.id;
+      task["index"] = this.task.index;
+      task["complete"] = this.task.complete;
       this.api.updateTask(task).subscribe({
         complete: () => {
-          console.log("Complete");
           this.router.navigate(["/"]);
-        },
-        error: err => {
-          console.log("Error: " + err);
         }
       });
     }
   }
 
   deleteTask() {
-    console.log("DELETE TASK");
     if (this.task != undefined) {
       this.api.deleteTask(this.task.id).subscribe({
         complete: () => {
-          console.log("Complete");
           this.router.navigate(["/"]);
-        },
-        error: err => {
-          console.log("Error: " + err);
         }
       });
     }

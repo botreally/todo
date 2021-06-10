@@ -29,6 +29,9 @@ public class Task {
     @Column(name="COMPLETE")
     private boolean complete;
 
+    @Column(name="LIST_INDEX")
+    private Integer index;
+
     public int getId() {
         return this.id;
     }
@@ -72,4 +75,13 @@ public class Task {
     public void setComplete(boolean complete) {
         this.complete = complete;
     }
+
+    public Integer getIndex() {
+        return this.index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
+
 }

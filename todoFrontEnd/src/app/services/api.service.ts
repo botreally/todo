@@ -13,7 +13,11 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>("http://localhost:8080/api/tasks");
+    return this.http.get<Task[]>("http://localhost:8080/api/tasks/all");
+  }
+
+  getTasksByComplete(complete: boolean): Observable<Task[]> {
+    return this.http.get<Task[]>(`http://localhost:8080/api/tasks?complete=${complete}`);
   }
 
   addTask(task: Task): Observable<Task> {
